@@ -47,6 +47,9 @@
     //类方法带参转发
     [per methodB:@"类方法带参转发"];
     
+    ClassA *classA = [[ClassA alloc] init];
+    SEL methaed = @selector(classAmethaed);
+    [classA performSelector:methaed];
     
 }
 
