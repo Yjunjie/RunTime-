@@ -83,11 +83,6 @@ void methodASubstituteParameter(id self, SEL _cmd, NSString *string){
     NSLog(@"实例带参转发methodASubstituteParameter%@", string);
 }
 
-void methodASubstituteParameteraa(id self, SEL _cmd, NSString *string){
-    // 程序会走我们C语言的部分
-    NSLog(@"实例带参转发methodASubstituteParameter%@", string);
-}
-
 NSString * methodASubstituteParameterAddturn(id self, SEL _cmd, NSString *string){
     NSLog(@"实例带参转发带返回参methodASubstituteParameterAddturn%@", string);
     return string;
