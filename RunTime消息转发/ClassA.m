@@ -10,4 +10,7 @@
 
 @implementation ClassA
 
+-(void)methodB{
+    NSLog(@"ClassA.h---methodB");
+}
 @end
