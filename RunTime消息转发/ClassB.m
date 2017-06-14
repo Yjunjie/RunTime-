@@ -34,7 +34,7 @@ v代表返回值为void, @表示self, :表示_cmd
 */
 
 //方案一
-//类方法转发
+//类方法动态添加方法
 +(BOOL)resolveClassMethod:(SEL)sel{
     if (sel == NSSelectorFromString(@"methodClassB")) {
         class_addMethod(objc_getMetaClass("ClassB"), sel, (IMP)methodClassASubstitute, "v@:");
@@ -55,7 +55,7 @@ void methodClassASubstituteParameter(id self, SEL _cmd, NSString *string){
     NSLog(@"类方法带参转发methodClassASubstituteParameter%@", string);
 }
 
-//实例法转发
+//动态添加方法
 + (BOOL)resolveInstanceMethod:(SEL)sel
 {
     
@@ -75,16 +75,16 @@ void methodClassASubstituteParameter(id self, SEL _cmd, NSString *string){
 void methodASubstitute (id self,SEL sel)
 {
     // 程序会走我们C语言的部分
-    NSLog(@"实例转发methodASubstitute:%@ %s", self, sel_getName(sel));
+    NSLog(@"实例methodASubstitute:%@ %s", self, sel_getName(sel));
 }
 
 void methodASubstituteParameter(id self, SEL _cmd, NSString *string){
     // 程序会走我们C语言的部分
-    NSLog(@"实例带参转发methodASubstituteParameter%@", string);
+    NSLog(@"实例带参methodASubstituteParameter%@", string);
 }
 
 NSString * methodASubstituteParameterAddturn(id self, SEL _cmd, NSString *string){
-    NSLog(@"实例带参转发带返回参methodASubstituteParameterAddturn%@", string);
+    NSLog(@"实例带参带返回参methodASubstituteParameterAddturn%@", string);
     return string;
 }
 
